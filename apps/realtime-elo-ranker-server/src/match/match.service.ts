@@ -48,7 +48,7 @@ export class MatchService {
     };
   }
 
-  async updateRank(
+  async majRank(
     winner: string,
     loser: string,
     draw: boolean,

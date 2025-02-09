@@ -2,8 +2,16 @@ import { Controller, Post, Body, Res, Logger } from '@nestjs/common';
 import { PlayerService } from './player.service';
 import { Player } from 'src/ENTITIES/player.entity';
 import { Response } from 'express';
-import { CreatePlayerDto } from './dto/create-player.dto';
+import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 
+export class CreatePlayerDto {
+  @IsNotEmpty()
+  @IsString()
+  readonly id: string;
+
+  @IsInt()
+  readonly rank: number;
+}
 
 @Controller('api/player')
 export class PlayerController {

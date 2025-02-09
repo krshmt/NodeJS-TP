@@ -14,11 +14,11 @@ export declare class MatchService {
         probDéfaite: number;
     };
     calculerRank(joueurGagnant: Player, joueurPerdant: Player, egalite: boolean): {
-        perdant: {
+        gagnant: {
             id: string;
             rank: number;
         };
-        gagnant: {
+        perdant: {
             id: string;
             rank: number;
         };

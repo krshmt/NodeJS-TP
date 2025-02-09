@@ -8,7 +8,7 @@ export declare class PlayerService {
     trouverJoueur(id: string): Promise<Player | null>;
     joueurExistant(id: string): Promise<boolean>;
     getToutLesJoueurs(): Promise<Player[]>;
-    create(joueur: Player): Promise<Player>;
+    create(player: Player): Promise<Player>;
     evenementMAJJoueur(joueur: Player): void;
     sauvegarderJoueur(joueur: Player): Promise<Player>;
 }

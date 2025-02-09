@@ -2,6 +2,37 @@
 
 Realtime Elo Ranker est une application web permettant de simuler des matchs entre des joueurs et de calculer et afficher leur classement Elo en temps réel.
 
+## Pour lancer l'application
+
+Le serveur et le client se lancent sur la même adresse. Par chance, si le client voit que l'adresse est déjà utilisé, il passe à celle d'après. Le serveur en n'est pas capable. C'est donc pour celà que nous devons lancer le serveur avant le client
+
+Tout d'abord, nous devons installer toutes les dépendences : 
+```shell
+pnpm install
+```
+
+Ensuite, nous devons lancer le Build
+```shell
+pnpm libs:ui:build
+```
+
+Après le build, l'application est prête à être lancé. Dans un terminal, faites : 
+```shell
+pnpm apps:server:dev
+```
+Dans un second terminal : 
+```shell
+pnpm apps:client:dev
+```
+
+Un petit jeu de données est présent lors du lancement de l'application pour faire les manipulation d'elo dessus
+
+## Tâches incomplètes
+
+En essayant de faire le EventEmitter, je n'ai pas réussi à le finaliser. Une erreur est relever sur l'id mais impossible de trouver la source du problème. Lors de l'ajout d'un joueur ou la réalisation d'un match, l'erreur est levée. Il faut donc actualiser la page afin de voir les résultats du match ou l'ajout du joueur.
+
+Aucun test est présent sur l'application. Les fichiers sont présents grâce à la commande du tp
+
 ## Conteneurs Métiers
 
 `apps/realtime-elo-ranker-server` : Serveur de l'application (à implémenter)

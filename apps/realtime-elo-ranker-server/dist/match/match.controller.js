@@ -16,9 +16,25 @@ exports.MatchController = exports.CreateMatchDto = void 0;
 const common_1 = require("@nestjs/common");
 const match_service_1 = require("./match.service");
 const player_service_1 = require("../player/player.service");
+const class_validator_1 = require("class-validator");
 class CreateMatchDto {
 }
 exports.CreateMatchDto = CreateMatchDto;
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateMatchDto.prototype, "winner", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateMatchDto.prototype, "loser", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsBoolean)(),
+    __metadata("design:type", Boolean)
+], CreateMatchDto.prototype, "draw", void 0);
 let MatchController = class MatchController {
     constructor(matchService, playerService) {
         this.matchService = matchService;

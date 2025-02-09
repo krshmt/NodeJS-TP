@@ -12,10 +12,22 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlayerController = void 0;
+exports.PlayerController = exports.CreatePlayerDto = void 0;
 const common_1 = require("@nestjs/common");
 const player_service_1 = require("./player.service");
-const create_player_dto_1 = require("./dto/create-player.dto");
+const class_validator_1 = require("class-validator");
+class CreatePlayerDto {
+}
+exports.CreatePlayerDto = CreatePlayerDto;
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreatePlayerDto.prototype, "id", void 0);
+__decorate([
+    (0, class_validator_1.IsInt)(),
+    __metadata("design:type", Number)
+], CreatePlayerDto.prototype, "rank", void 0);
 let PlayerController = class PlayerController {
     constructor(appService) {
         this.appService = appService;
@@ -31,7 +43,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_player_dto_1.CreatePlayerDto, Object]),
+    __metadata("design:paramtypes", [CreatePlayerDto, Object]),
     __metadata("design:returntype", Promise)
 ], PlayerController.prototype, "create", null);
 exports.PlayerController = PlayerController = __decorate([

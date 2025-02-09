@@ -43,8 +43,8 @@ let MatchService = class MatchService {
         const nouveauRankGagnant = joueurGagnant.rank + 32 * (ajustement - probVictoire);
         const nouveauRankPerdant = joueurPerdant.rank + 32 * ((egalite ? 0.5 : 0) - probDéfaite);
         return {
-            perdant: { id: joueurPerdant.id, rank: Math.round(nouveauRankPerdant) },
             gagnant: { id: joueurGagnant.id, rank: Math.round(nouveauRankGagnant) },
+            perdant: { id: joueurPerdant.id, rank: Math.round(nouveauRankPerdant) },
         };
     }
     async majRank(winner, loser, draw) {
@@ -52,7 +52,7 @@ let MatchService = class MatchService {
         const loserDB = await this.joueurs.findOne({ where: { id: loser } });
         if (!winnerDB || !loserDB)
             return;
-        const { perdant, gagnant } = this.calculerRank(winnerDB, loserDB, draw);
+        const { gagnant, perdant } = this.calculerRank(winnerDB, loserDB, draw);
         await this.joueurs.save(gagnant).then(() => {
             this.majJoueurEvenement(gagnant);
         });

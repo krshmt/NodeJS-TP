@@ -3,10 +3,19 @@ import { MatchService } from './match.service';
 import { PlayerService } from '../player/player.service';
 import { Response } from 'express';
 import { Match } from 'src/ENTITIES/match.entity';
+import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateMatchDto {
+  @IsNotEmpty()
+  @IsString()
   readonly winner: string;
+
+  @IsNotEmpty()
+  @IsString()
   readonly loser: string;
+
+  @IsNotEmpty()
+  @IsBoolean()
   readonly draw: boolean;
 }
 

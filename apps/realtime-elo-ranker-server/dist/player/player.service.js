@@ -33,19 +33,19 @@ let PlayerService = class PlayerService {
     getToutLesJoueurs() {
         return this.joueurs.find();
     }
-    create(joueur) {
-        return this.getToutLesJoueurs().then((joueurs) => {
-            if (joueurs.length === 0) {
-                joueur.rank = 1000;
-                this.evenementMAJJoueur(joueur);
-                return this.sauvegarderJoueur(joueur);
+    create(player) {
+        return this.getToutLesJoueurs().then((players) => {
+            if (players.length === 0) {
+                player.rank = 1000;
+                this.evenementMAJJoueur(player);
+                return this.sauvegarderJoueur(player);
             }
             else {
-                const rangMoyen = joueurs.reduce((acc, joueur) => acc + joueur.rank, 0) /
-                    joueurs.length;
-                joueur.rank = Math.round(rangMoyen);
-                this.evenementMAJJoueur(joueur);
-                return this.sauvegarderJoueur(joueur);
+                const avgRank = players.reduce((acc, player) => acc + player.rank, 0) /
+                    players.length;
+                player.rank = Math.round(avgRank);
+                this.evenementMAJJoueur(player);
+                return this.sauvegarderJoueur(player);
             }
         });
     }
